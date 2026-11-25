@@ -1,3 +1,4 @@
+ HEAD
 # SkillSwap 🔄
 
 > **Teach what you know. Learn what you want.**  
@@ -177,3 +178,4 @@ Now that the architecture and communication pipeline are verified:
 - **Phase 2**: Define Supabase PostgreSQL schema (`users`, `skills`, `swap_requests`, `reviews`) and implement user authentication.
 - **Phase 3**: Implement Skill Listings (Teach & Learn skills) with search, filter, and intelligent bilateral match algorithms.
 - **Phase 4**: Implement Skill Swap requests, acceptance workflows, and interactive messaging / session scheduler.
+
