@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF7F0;
+    color: #34313B;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ============================================================
+   PAPER GRAIN TEXTURE
+   ============================================================ */
+.paper-pattern {
+  background-image: radial-gradient(rgba(52, 49, 59, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ============================================================
+   WHIMSICAL PASTEL SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #FAF7F0; }
+::-webkit-scrollbar-thumb {
+  background: #C8B6F6;
+  border-radius: 9999px;
+  border: 2px solid #FAF7F0;
+}
+::-webkit-scrollbar-thumb:hover { background: #8270B5; }
+
+/* ============================================================
+   SCROLL-REVEAL — Fade + Slide Up
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+/* ============================================================
+   GLASSMORPHISM UTILITY
+   ============================================================ */
+.glass {
+  background: rgba(250, 247, 240, 0.72);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1.5px solid rgba(200, 182, 246, 0.35);
+}
+.glass-dark {
+  background: rgba(52, 49, 59, 0.75);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1.5px solid rgba(200, 182, 246, 0.2);
+}
+
+/* ============================================================
+   ANIMATED GRADIENT TEXT
+   ============================================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #8270B5 0%, #C8B6F6 40%, #F5DE91 70%, #B9CBB3 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   SHIMMER / SHINE SWEEP ANIMATION
+   ============================================================ */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245, 222, 145, 0.35), transparent);
+  transform: skewX(-18deg);
+  animation: shimmer-sweep 3.5s ease-in-out infinite;
+}
+@keyframes shimmer-sweep {
+  0%   { left: -100%; }
+  60%  { left: 160%; }
+  100% { left: 160%; }
+}
+
+/* ============================================================
+   MORPHING BLOB BACKGROUND
+   ============================================================ */
+.blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: blob-morph 8s ease-in-out infinite alternate;
+}
+.blob-2 {
+  border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+  animation: blob-morph 11s ease-in-out infinite alternate-reverse;
+}
+@keyframes blob-morph {
+  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  33%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  66%  { border-radius: 50% 30% 60% 40% / 30% 50% 60% 70%; }
+  100% { border-radius: 40% 60% 70% 30% / 60% 40% 30% 70%; }
+}
+
+/* ============================================================
+   FLOATING DRIFT ANIMATION
+   ============================================================ */
+@keyframes float-drift {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  33%  { transform: translateY(-10px) rotate(1.5deg); }
+  66%  { transform: translateY(-5px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+.float-drift {
+  animation: float-drift 6s ease-in-out infinite;
+}
+.float-drift-slow {
+  animation: float-drift 9s ease-in-out infinite;
+}
+.float-drift-fast {
+  animation: float-drift 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   SPIN SLOW (FOR 3D RING DECORATIONS)
+   ============================================================ */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.spin-slow { animation: spin-slow 18s linear infinite; }
+.spin-slow-reverse { animation: spin-slow 24s linear infinite reverse; }
+
+/* ============================================================
+   GLOW PULSE (FOR HIGHLIGHTS)
+   ============================================================ */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(130, 112, 181, 0); }
+  50%       { box-shadow: 0 0 24px 8px rgba(130, 112, 181, 0.22); }
+}
+.glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* ============================================================
+   BORDER GRADIENT SPIN (RAINBOW BORDER EFFECT)
+   ============================================================ */
+.border-gradient {
+  position: relative;
+  background: white;
+}
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #C8B6F6, #F5DE91, #B9CBB3, #8270B5, #C8B6F6);
+  background-size: 300% 300%;
+  animation: gradient-shift 4s ease infinite;
+  z-index: -1;
+}
+
+/* ============================================================
+   CARD 3D TILT — Pure CSS fallback
+   ============================================================ */
+.card-3d {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transform-style: preserve-3d;
+}
+.card-3d:hover {
+  transform: perspective(800px) rotateX(-3deg) rotateY(3deg) scale(1.02);
+  box-shadow: 8px 8px 0px #34313B;
+}
+
+/* ============================================================
+   STAGGER GRID ENTRY
+   ============================================================ */
+.stagger-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-grid > *:nth-child(2) { animation-delay: 0.12s; }
+.stagger-grid > *:nth-child(3) { animation-delay: 0.19s; }
+.stagger-grid > *:nth-child(4) { animation-delay: 0.26s; }
+.stagger-grid > *:nth-child(5) { animation-delay: 0.33s; }
+.stagger-grid > *:nth-child(6) { animation-delay: 0.40s; }
+.stagger-grid > *:nth-child(7) { animation-delay: 0.47s; }
+.stagger-grid > *:nth-child(8) { animation-delay: 0.54s; }
+
+/* ============================================================
+   CURSOR GLOW TRAIL (APPLIED ON .cursor-trail CONTAINERS)
+   ============================================================ */
+.cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 182, 246, 0.14) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: left 0.1s ease-out, top 0.1s ease-out;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+}
+
+/* ============================================================
+   NUMBER COUNTER ANIMATION
+   ============================================================ */
+@keyframes count-up {
+  from { opacity: 0; transform: scale(0.7) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.count-up {
+  animation: count-up 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
